@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CellScout</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            margin-right: 10px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin: 0;
+        }
+
+        form {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            padding: 8px 12px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 50%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            form {
+                max-width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </div>
+        <h1>CellScout</h1>
+    </div>
+    <form action="/" method="post">
+        <label for="price_range"><strong>Enter maximum price range for mobile phones:</strong></label>
+        <input type="text" id="price_range" name="price_range" required>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

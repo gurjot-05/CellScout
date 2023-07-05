@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CellScout</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+    
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .logo {
+            margin-right: 10px;
+        }
+    
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin: 0;
+        }
+    
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+    
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    
+        tr:hover {
+            background-color: #ddd;
+        }
+    
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+    
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+    
+            .button {
+                position: static;
+                display: block;
+                margin-top: 20px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </div>
+        <h1>CellScout</h1>
+    </div>
+    <h1>Results</h1>
+    {% if data %}
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Prices</th>
+            <th>Description</th>
+            <th>Reviews</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row['Product Name'] }}</td>
+            <td>{{ row['Prices'] }}</td>
+            <td>{{ row['Description'] }}</td>
+            <td>{{ row['Reviews'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/" class="button">Go Back to Scraper</a>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+</body>
+</html>
